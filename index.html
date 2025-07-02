@@ -1,16 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Raiden Intro Scene</title>
-    <style>
-        html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #000; }
-        #unityContainer { width: 100%; height: 100%; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Raiden Intro Scene</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    #unityContainer {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
-    <div id="unityContainer"></div>
-    <script src="WebGL.loader.js"></script>
+  <div id="unityContainer"></div>
+  <script src="WebGL.loader.js"></script>
+  <script>
+    var buildUrl = "./";
+    var config = {
+      dataUrl: "WebGL.data",
+      frameworkUrl: "WebGL.framework.js",
+      codeUrl: "WebGL.wasm",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "Raiden",
+      productVersion: "1.0",
+    };
+
+    var container = document.querySelector("#unityContainer");
+
+    createUnityInstance(container, config).then((unityInstance) => {
+      console.log("Unity loaded successfully");
+    }).catch((message) => {
+      alert("Failed to load Unity WebGL build. " + message);
+    });
+  </script>
 </body>
 </html>
